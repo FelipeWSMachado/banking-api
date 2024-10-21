@@ -52,4 +52,13 @@ router.get("/balance", async (req: Request, res: Response) => {
   return res.status(200).json(account.getBalance());
 });
 
+router.post("/reset", async (req: Request, res: Response) => {
+  try {
+    await accountRepository.reset();
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(500).json({ message: "Failed to reset accounts" });
+  }
+});
+
 export const accountRoutes = router;
