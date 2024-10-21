@@ -1,4 +1,3 @@
-// src/presentation/controllers/accountController.ts
 import { Request, Response } from "express";
 import { DepositUseCase } from "../../application/usecases/depositUseCase";
 import { TransferUseCase } from "../../application/usecases/transferUseCase";

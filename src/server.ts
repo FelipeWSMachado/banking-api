@@ -1,4 +1,3 @@
-// src/server.ts
 import express from "express";
 import { accountRoutes } from "./routes/accountRoutes";
 import dotenv from "dotenv";
