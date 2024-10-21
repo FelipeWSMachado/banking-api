@@ -8,10 +8,10 @@ export class TransferUseCase {
     originId: string,
     destinationId: string,
     amount: number
-  ): Promise<{ origin: Account; destination: Account }> {
+  ): Promise<{ origin: Account; destination: Account } | null> {
     const origin = await this.accountRepository.findById(originId);
     if (!origin) {
-      throw new Error("Origin account not found");
+      return null;
     }
 
     let destination = await this.accountRepository.findById(destinationId);

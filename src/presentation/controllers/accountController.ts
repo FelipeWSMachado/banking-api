@@ -62,7 +62,7 @@ export class AccountController {
         amount
       );
 
-      if (!acc) {
+      if (!acc?.origin || !acc?.destination) {
         return res.status(404).json(0);
       }
 
