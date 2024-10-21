@@ -1,8 +1,8 @@
-import { SQLiteAccountRepository } from "../../infrastructure/persistence/sqliteAccountRepository";
+import { InMemoryAccountRepository } from "../../infrastructure/persistence/inMemoryAccountRepository";
 import { Account } from "../../domain/account";
 
 export class TransferUseCase {
-  constructor(private accountRepository: SQLiteAccountRepository) {}
+  constructor(private accountRepository: InMemoryAccountRepository) {}
 
   async execute(
     originId: string,
@@ -10,6 +10,7 @@ export class TransferUseCase {
     amount: number
   ): Promise<{ origin: Account; destination: Account } | null> {
     const origin = await this.accountRepository.findById(originId);
+
     if (!origin) {
       return null;
     }

@@ -1,8 +1,8 @@
-import { SQLiteAccountRepository } from "../../infrastructure/persistence/sqliteAccountRepository";
+import { InMemoryAccountRepository } from "../../infrastructure/persistence/inMemoryAccountRepository";
 import { Account } from "../../domain/account";
 
 export class DepositUseCase {
-  constructor(private accountRepository: SQLiteAccountRepository) {}
+  constructor(private accountRepository: InMemoryAccountRepository) {}
 
   async execute(destination: string, amount: number): Promise<Account> {
     let account = await this.accountRepository.findById(destination);

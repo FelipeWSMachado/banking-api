@@ -1,11 +1,12 @@
 import { Router, Request, Response } from "express";
-import { SQLiteAccountRepository } from "../infrastructure/persistence/sqliteAccountRepository";
+import { InMemoryAccountRepository } from "../infrastructure/persistence/inMemoryAccountRepository"; // Alterado
 import { AccountController } from "../presentation/controllers/accountController";
 import { DepositUseCase } from "../application/usecases/depositUseCase";
 import { TransferUseCase } from "../application/usecases/transferUseCase";
 import { WithdrawUseCase } from "../application/usecases/withdrawUseCase";
 
-const accountRepository = new SQLiteAccountRepository();
+// Usar o repositório em memória
+const accountRepository = new InMemoryAccountRepository();
 const depositUseCase = new DepositUseCase(accountRepository);
 const transferUseCase = new TransferUseCase(accountRepository);
 const withdrawUseCase = new WithdrawUseCase(accountRepository);
